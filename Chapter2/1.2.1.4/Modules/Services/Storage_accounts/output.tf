@@ -1,6 +1,6 @@
-output "Resource-Group-id" {
-  value = "${azurerm_resource_group.generic-resource-gp.id}"
-}
+# output "Resource-Group-id" {
+#   value = "${azurerm_resource_group.generic-resource-gp.id}"
+# }
 
 output "Storage-Account-id" {
   value = "${azurerm_storage_account.generic-storage-ac.id}"

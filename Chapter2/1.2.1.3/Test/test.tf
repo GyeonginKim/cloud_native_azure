@@ -1,7 +1,11 @@
 provider "azurerm" {
     features {}
 }
-resource "azurerm_resource_group" "rg" {
-  name = "testResourceGroup"
-  location = "westus"
+data "azurerm_resource_group" "rg" {
+  name = "oscar-test"
+  //location = "koreacentral"
+}
+
+output "id" {
+  value       = data.azurerm_resource_group.rg.name
 }

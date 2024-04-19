@@ -2,14 +2,19 @@ provider "azurerm" {
     features {}
 }
 
-resource "azurerm_resource_group" "generic-resource-gp" {
-  name     = var.resource-grp-name
-  location = var.azure-dc
+# resource "azurerm_resource_group" "generic-resource-gp" {
+#   name     = var.resource-grp-name
+#   location = var.azure-dc
+# }
+
+data "azurerm_resource_group" "resource-grp-name" {
+  name = "oscar-test"
+  //location = "koreacentral"
 }
 
 resource "azurerm_storage_account" "generic-storage-ac" {
   name                     = var.storage-account-name
-  resource_group_name      = azurerm_resource_group.generic-resource-gp.name
+  resource_group_name      = data.azurerm_resource_group.resource-grp-name.name//azurerm_resource_group.generic-resource-gp.name
   location                 = var.azure-dc
   account_tier             = var.storage-account-tier
   account_replication_type = var.storage-replication-type
